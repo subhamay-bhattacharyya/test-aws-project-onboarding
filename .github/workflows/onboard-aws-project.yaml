@@ -9,7 +9,7 @@ on:
 
 jobs:
   load-config:
-    name: Load project-config.json
+    name: Load env.json
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -19,14 +19,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Read project-config.json
+      - name: Read env.json
         id: load
         run: |
           if [ ! -f env.json ]; then
-            echo "ERROR: project-config.json not found in repo root"
+            echo "ERROR: env.json not found in repo root"
             exit 1
           fi
-          CONFIG=$(jq -c 'del(.. | ._comment?)' project-config.json)
+          CONFIG=$(jq -c 'del(.. | ._comment?)' env.json)
           echo "config=$CONFIG" >> "$GITHUB_OUTPUT"
 
   onboard:
