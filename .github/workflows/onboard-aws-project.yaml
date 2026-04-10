@@ -32,7 +32,7 @@ jobs:
   onboard:
     name: Onboard AWS Project
     needs: load-config
-    uses: subhamay-bhattacharyya-gha/aws-project-onboarding/.github/workflows/aws-project-onboarding.yaml@v1
+    uses: subhamay-bhattacharyya-gha/aws-project-onboarding/.github/workflows/aws-project-onboarding.yaml@feature/GHA-0001-implement-v100-aws-proje
     with:
       config: ${{ needs.load-config.outputs.config }}
     secrets:
